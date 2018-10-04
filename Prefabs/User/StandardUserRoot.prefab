@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1233251840200538}
+  m_IsPrefabParent: 1
+--- !u!1 &1233251840200538
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4407743765373972}
+  - component: {fileID: 114801378251592722}
+  - component: {fileID: 114572626557393346}
+  m_Layer: 0
+  m_Name: StandardUserRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4407743765373972
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1233251840200538}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114572626557393346
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1233251840200538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5608467404b70b4fb3bfad7a9f6b363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speedMultiplier: 4
+  _easeCurve: {fileID: 0}
+--- !u!114 &114801378251592722
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1233251840200538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ff1c76f904db2444b47864d310c8ce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _configs:
+  - {fileID: 11400000, guid: c763da43c6ed4c04386b469df0201284, type: 2}
+  - {fileID: 11400000, guid: 367e201f2eec72c48b69d81986b7639c, type: 2}
+  - {fileID: 11400000, guid: 5d6d747ab1ad31c4da9046ff6212ff01, type: 2}
+  - {fileID: 11400000, guid: 64424bebd73c9b549afca31979bc8490, type: 2}
+  - {fileID: 11400000, guid: a70123c36f156c045acb7de6181ef942, type: 2}
+  _userHeadPrefab: {fileID: 114322028127816006, guid: 3806ff76fd29f114e9d6c24afc2801d6,
+    type: 2}
+  _trackingSpaceType: 1

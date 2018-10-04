@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 875e205373d6cf84fb9d502b390e2c32, type: 3}
+  m_Name: StandardHapticMap
+  m_EditorClassIdentifier: 
+  _descriptions:
+  - _hapticKey: Enter
+    _hapticNormalizedIntensity: 0.4
+    _hapticDuration: 0.01
+  - _hapticKey: Exit
+    _hapticNormalizedIntensity: 0.2
+    _hapticDuration: 0.01
+  - _hapticKey: Press
+    _hapticNormalizedIntensity: 0.8
+    _hapticDuration: 0.02
+  - _hapticKey: Release
+    _hapticNormalizedIntensity: 0.4
+    _hapticDuration: 0.06
+  - _hapticKey: DragTick
+    _hapticNormalizedIntensity: 0.2
+    _hapticDuration: 0.001
+  - _hapticKey: SmallTick
+    _hapticNormalizedIntensity: 0.1
+    _hapticDuration: 0.001
+  - _hapticKey: MidTick
+    _hapticNormalizedIntensity: 0.5
+    _hapticDuration: 0.001
+  - _hapticKey: BigTick
+    _hapticNormalizedIntensity: 1
+    _hapticDuration: 0.001

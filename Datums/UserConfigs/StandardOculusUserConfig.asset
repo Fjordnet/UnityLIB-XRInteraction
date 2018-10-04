@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f73a7bc8224c94a45a878dfa4b24de86, type: 3}
+  m_Name: StandardOculusUserConfig
+  m_EditorClassIdentifier: 
+  _deviceName: Oculus
+  _leftUserControllerPrefab: {fileID: 114556778759609266, guid: 5e38ae381cb13cf4a833dd81656c3ba9,
+    type: 2}
+  _leftControllerModelPrefab: {fileID: 114078530211308672, guid: f500615f08246024a841dfaa482e70a5,
+    type: 2}
+  _leftControllerInputMap: {fileID: 11400000, guid: c3bd2508a8617424787b8590c39b0d92,
+    type: 2}
+  _rightUserControllerPrefab: {fileID: 114556778759609266, guid: 5e38ae381cb13cf4a833dd81656c3ba9,
+    type: 2}
+  _rightControllerModelPrefab: {fileID: 114981126747405708, guid: c6524f1e2c7ee334b9649e02ea07488e,
+    type: 2}
+  _rightControllerInputMap: {fileID: 11400000, guid: c3bd2508a8617424787b8590c39b0d92,
+    type: 2}
+  _hapticEngine: {fileID: 0}
+  _hapticMap: {fileID: 11400000, guid: 5f0e67272feff9a4da49fc20c2ed807a, type: 2}

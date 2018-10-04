@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f73a7bc8224c94a45a878dfa4b24de86, type: 3}
+  m_Name: GrabOVRViveUserConfig
+  m_EditorClassIdentifier: 
+  _deviceName: OpenVR-lighthouse
+  _leftUserControllerPrefab: {fileID: 114749476577315842, guid: f93dd3ba9c044e04390119d669b687cc,
+    type: 2}
+  _leftControllerModelPrefab: {fileID: 114879487397956940, guid: 06b4bd17695b40a4bb3be3e481cccbb9,
+    type: 2}
+  _leftControllerInputMap: {fileID: 11400000, guid: c557a3f7a9767cc47b3ca897f19e9961,
+    type: 2}
+  _rightUserControllerPrefab: {fileID: 114749476577315842, guid: f93dd3ba9c044e04390119d669b687cc,
+    type: 2}
+  _rightControllerModelPrefab: {fileID: 114879487397956940, guid: 06b4bd17695b40a4bb3be3e481cccbb9,
+    type: 2}
+  _rightControllerInputMap: {fileID: 11400000, guid: c557a3f7a9767cc47b3ca897f19e9961,
+    type: 2}
+  _hapticEngine: {fileID: 114213225929022770, guid: 8895265df30f0084f882d8c34def99cc,
+    type: 2}
+  _hapticMap: {fileID: 11400000, guid: 5f0e67272feff9a4da49fc20c2ed807a, type: 2}
