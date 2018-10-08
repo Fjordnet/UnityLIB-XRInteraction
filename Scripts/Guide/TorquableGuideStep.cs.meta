@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 62ce310cf1bb86541ad6fab3f70362fc
+timeCreated: 1524596120
+licenseType: Pro
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _activateSound: {instanceID: 0}
+  - _toolGuideVisual: {instanceID: 0}
+  - _torqueGuideVisual: {instanceID: 0}
+  - _highlightMaterial: {fileID: 2100000, guid: 9ace927b7137e9140aa87307e1f159e9,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
