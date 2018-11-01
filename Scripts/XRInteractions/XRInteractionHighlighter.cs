@@ -174,7 +174,7 @@ namespace Fjord.XRInteraction.XRInteractions
             {
                 _highlightMaterial.SetVector(
                     HighlightPropertyNames[index],
-                    interactor.CurrentHitRay.origin);
+                    interactor.CurrentSourceRay.origin);
             }
         }
 

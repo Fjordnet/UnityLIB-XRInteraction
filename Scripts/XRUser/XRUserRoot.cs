@@ -88,24 +88,12 @@ namespace Fjord.XRInteraction.XRUser
 
         private void InputTracking_trackingLost(XRNodeState nodeState)
         {
-//            Debug.Log("InputTracking_trackingLost " + nodeState.nodeType);
-            /*
-            Debug.Log("InputTracking_trackingLost for UniqueID :" + nodeState.uniqueID);
 
-            XRUserController controller = _userControllers.Find(x => x.UniqueID == nodeState.uniqueID);
-            if (controller != null)
-            {
-                controller.gameObject.SetActive(false);
-            }
-            */
         }
 
         private void InputTracking_trackingAcquired(XRNodeState nodeState)
         {
-//            Debug.Log("InputTracking_trackingAcquired " + nodeState.nodeType);
-            //Debug.Log("InputTracking_trackingAcquired for UniqueID :" + nodeState.uniqueID);           
-
-            
+    
         }
 
         private void InputTracking_nodeRemoved(XRNodeState nodeState)
