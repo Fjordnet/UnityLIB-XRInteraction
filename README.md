@@ -8,7 +8,7 @@ The XRInteraction library provides all necessary logic, and abstractions, in ord
 
 This Library is built off the XR interoperability built into Unity, so it does not carry a dependency to the Oculus, SteamVR nor Window MR SDK's. Currently this is the only library necessary to import to interface with supported devices, the intention is to keep it that way moving forawrd.. This library is being developed specifically for enterprise VR and realistic simulation. So there is a focus on enabling highly complex, and realistic, interactions versus more abstracted and simplified interactions.
 
-[View a video a an VR experience created utilizing this library](https://vimeo.com/274782042/834524b181)
+[View a video of a VR experience created utilizing this library](https://vimeo.com/274782042/834524b181)
 
 [Please visit the Wiki for further documentation.](https://github.com/Fjordnet/UnityLIB-XRInteraction/wiki)
 
