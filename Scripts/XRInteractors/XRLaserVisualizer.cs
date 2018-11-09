@@ -49,7 +49,6 @@ namespace Fjord.XRInteraction.XRInteractors
 
         private const int BezierSegmentCount = 32;
         private LineRenderer _lineRenderer;
-        private CubicBezierSegment _bezierSegment;
         private HoverState _hoverState;
         private XRLaserInteractor _laserInteractor;
         private GameObject _hitTargetInstance;

@@ -352,8 +352,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95a70a939063eeb4b8501c5ef3216db6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hitTargetPrefab: {fileID: 100000, guid: aad72d7f9f4a790408d732384fa5732b, type: 3}
-  _hitTargetScale: 0.1
+  _hitTargetPrefab: {fileID: 0}
+  _hitTargetScale: 0.01
   _hoverStartColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
   _hoverEndColor: {r: 0.41819856, g: 0.6691177, b: 0.46146047, a: 1}
   _pressStartColor: {r: 1, g: 1, b: 1, a: 1}
@@ -479,6 +479,8 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: Fjord.Common.UnityEvents.PointerEventDataUnityEvent, Assembly-CSharp,
         Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  _pointerPositionDamp: 0.15
+  _pointerRotationDamp: 0.15
 --- !u!120 &120107963401297200
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -492,7 +494,6 @@ LineRenderer:
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 28de854e3fb257a47b228941c4360ccc, type: 2}
   m_StaticBatchInfo:
@@ -523,15 +524,12 @@ LineRenderer:
     widthCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 3
+      - serializedVersion: 2
         time: 0
         value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -584,7 +582,6 @@ LineRenderer:
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 5050cefb451fedb46b3a8e993c280848, type: 2}
   m_StaticBatchInfo:
@@ -615,15 +612,12 @@ LineRenderer:
     widthCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 3
+      - serializedVersion: 2
         time: 0
         value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -676,7 +670,6 @@ LineRenderer:
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 28de854e3fb257a47b228941c4360ccc, type: 2}
   m_StaticBatchInfo:
@@ -707,18 +700,27 @@ LineRenderer:
     widthCurve:
       serializedVersion: 2
       m_Curve:
-      - serializedVersion: 3
+      - serializedVersion: 2
         time: 0
         value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+      - serializedVersion: 2
+        time: 0.6015813
+        value: 1
+        inSlope: -0.014752469
+        outSlope: -0.014752469
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 0
+        inSlope: -4.1162963
+        outSlope: -4.1162963
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
+      m_RotationOrder: 0
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 1, b: 1, a: 1}
