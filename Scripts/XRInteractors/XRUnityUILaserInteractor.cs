@@ -68,6 +68,7 @@ namespace Fjord.XRInteraction.XRInteractors
             eventCameraGameObject.transform.position = transform.position;
             eventCameraGameObject.transform.rotation = transform.rotation;
             EventCamera = eventCameraGameObject.AddComponent<Camera>();
+            EventCamera.nearClipPlane = .01f;
             EventCamera.enabled = false;
         }
 
