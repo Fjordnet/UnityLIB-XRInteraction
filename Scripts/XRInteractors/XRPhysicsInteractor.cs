@@ -498,7 +498,6 @@ namespace Fjord.XRInteraction.XRInteractors
         private bool HasInteractionReciever(Collider targetCollider)
         {
             GetInteractions(targetCollider, _recyclableInteractions);
-            bool returnValue = false;
             for (int i = 0; i < _recyclableInteractions.Count; ++i)
             {
                 if (_recyclableInteractions[i].enabled)

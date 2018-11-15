@@ -23,13 +23,11 @@ namespace Fjord.XRInteraction.XRInteractors
         private LineRenderer _lineRenderer;
         private Material _material;
         private XRFlexLaserInteractor _flexLaserInteractor;
-        private Material _hitTargetMaterial;
         private GameObject _hitTargetInstance;
         
         private void Awake()
         {
             _hitTargetInstance = Instantiate(_hitTargetPrefab);
-            _hitTargetMaterial = _hitTargetInstance.GetComponent<MeshRenderer>().material;
             
             _lineRenderer = GetComponent<LineRenderer>();
             _flexLaserInteractor = GetComponent<XRFlexLaserInteractor>();

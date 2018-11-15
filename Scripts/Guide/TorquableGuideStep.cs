@@ -22,7 +22,6 @@ namespace Fjord.XRInteraction.Attachables
         private Material _highlightMaterial;
 
         private Torquable _torquable;
-        private MeshRenderer[] _toolRenderers;
         private MeshFilter[] _toolMeshFilters;
         private bool _drawToolHighlight;
 
@@ -42,7 +41,6 @@ namespace Fjord.XRInteraction.Attachables
             {
                 _torquable.TorquableBy[0].MovementInteraction.Events.ButtonDown.AddListener(ButtonDown);
                 _torquable.TorquableBy[0].MovementInteraction.Events.ButtonUp.AddListener(ButtonUp);
-                _toolRenderers = _torquable.TorquableBy[0].ParentTransform.GetComponentsInChildren<MeshRenderer>();
                 
                 if (null != _highlightMaterial)
                 {

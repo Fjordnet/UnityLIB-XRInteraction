@@ -39,7 +39,7 @@ namespace Fjord.XRInteraction.XRInteractions
 
         private bool _initialRigidyUseGravity;
         private Vector3 _moveVelocity;
-        private Vector3 _rotateVelocity;
+        private Vector3 _rotateVelocity = Vector3.zero;
         private Transform _overrideDampTarget;
         private bool _setToInitialKinematicWhenNearInputTarget;
         private float _currentPositionDamp;

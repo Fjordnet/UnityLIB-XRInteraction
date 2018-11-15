@@ -29,7 +29,6 @@ namespace Fjord.XRInteraction.XRInteractions
         private XRInteractionEventReceiver _interactionEventReceiver;
         private MeshFilter[] _meshFilters;
 
-        private float _spread = 10;
         private HoverState[] _states = new HoverState[2];
         private MaterialPropertyBlock _leftBlock;
 

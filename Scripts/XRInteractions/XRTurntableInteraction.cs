@@ -12,14 +12,11 @@ namespace Fjord.XRInteraction.XRInteractions
 
         private float _priorAngle;
         private float _deltaAngle;
-        private float _targetAngle;
         private float _dampVelocity;
         
-
         protected virtual void Awake()
         {
             AttachedRigidbody = GetComponentInParent<Rigidbody>();
-            _targetAngle = AttachedRigidbody.transform.eulerAngles.y;
         }
 
         private void Update()

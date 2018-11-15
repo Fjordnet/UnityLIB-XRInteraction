@@ -14,12 +14,6 @@ namespace Fjord.XRInteraction.XRInteractors
     public class XRUnityUILaserVisualizer : MonoBehaviour
     {
         [SerializeField]
-        private GameObject _hitTargetPrefab;
-
-        [SerializeField]
-        private float _hitTargetScale = .2f;
-
-        [SerializeField]
         private Color _hoverStartColor;
 
         [SerializeField]

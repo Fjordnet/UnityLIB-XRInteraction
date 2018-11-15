@@ -5,7 +5,9 @@ using Fjord.Common.Data;
 using Fjord.Common.Extensions;
 using Fjord.Common.Tweens;
 using Fjord.Common.Types;
+using Fjord.XRInteraction.XRUnityEvents;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR;
 using Valve.VR;
@@ -29,11 +31,19 @@ namespace Fjord.XRInteraction.XRUser
         [SerializeField]
         private TrackingSpaceType _trackingSpaceType = TrackingSpaceType.RoomScale;
 
+        [SerializeField]
+        private RegistrationEvents _registrationEvents = new RegistrationEvents();
+
         private XRUserRootConfig configuration = null;
         private readonly List<XRUserController> _userControllers = new List<XRUserController>();
         private readonly List<XRNode> _acquiredXRNodes = new List<XRNode>();
 
         public XRUserHead UserHead { get; private set; }
+
+        public RegistrationEvents RegistrationEvents
+        {
+            get { return _registrationEvents; }
+        }
 
         private void Awake()
         {
@@ -48,9 +58,9 @@ namespace Fjord.XRInteraction.XRUser
                                e.Message);
                 return;
             }
-            
+
             XRDevice.SetTrackingSpaceType(_trackingSpaceType);
-            
+
             configuration = null;
             if (XRSettings.loadedDeviceName == "OpenVR")
             {
@@ -88,12 +98,22 @@ namespace Fjord.XRInteraction.XRUser
 
         private void InputTracking_trackingLost(XRNodeState nodeState)
         {
-
+            XRUserController controller = _userControllers.Find(x => x.UniqueID == nodeState.uniqueID);
+            Debug.Log("InputTracking_trackingLost " + controller);
+            if (controller != null)
+            {
+                _registrationEvents.TrackingLost.Invoke(controller);
+            }
         }
 
         private void InputTracking_trackingAcquired(XRNodeState nodeState)
         {
-    
+            XRUserController controller = _userControllers.Find(x => x.UniqueID == nodeState.uniqueID);
+            Debug.Log("InputTracking_trackingAcquired " + controller);
+            if (controller != null)
+            {
+                _registrationEvents.TrackingAcquired.Invoke(controller);
+            }
         }
 
         private void InputTracking_nodeRemoved(XRNodeState nodeState)
@@ -101,8 +121,9 @@ namespace Fjord.XRInteraction.XRUser
             Debug.Log("InputTracking_nodeRemoved for UniqueID :" + nodeState.uniqueID);
 
             XRUserController controller = _userControllers.Find(x => x.UniqueID == nodeState.uniqueID);
-            if(controller != null)
+            if (controller != null)
             {
+                _registrationEvents.Removed.Invoke(controller);
                 _userControllers.Remove(controller);
                 Destroy(controller.gameObject);
             }
@@ -110,19 +131,20 @@ namespace Fjord.XRInteraction.XRUser
 
         private void InputTracking_nodeAdded(XRNodeState nodeState)
         {
-            Debug.Log("InputTracking_nodeAdded for nodeType :"+ nodeState.nodeType + "\nWith UniqueID : " + nodeState.uniqueID);
+            Debug.Log("InputTracking_nodeAdded for nodeType :" + nodeState.nodeType + "\nWith UniqueID : " +
+                      nodeState.uniqueID);
 
             if (_acquiredXRNodes.Contains(nodeState.nodeType))
             {
                 return;
             }
-            
+
             Chirality chirality = (Chirality)0; //0 is none
             if (nodeState.nodeType == XRNode.LeftHand)
             {
                 chirality = (Chirality)1;
             }
-            else if(nodeState.nodeType == XRNode.RightHand)
+            else if (nodeState.nodeType == XRNode.RightHand)
             {
                 chirality = (Chirality)2;
             }
@@ -130,9 +152,9 @@ namespace Fjord.XRInteraction.XRUser
             {
                 return;
             }
-            
+
             _acquiredXRNodes.Add(nodeState.nodeType);
-            
+
             XRUserController addedController = Instantiate(
                 configuration.UserControllerPrefab(chirality),
                 Vector3.zero,
@@ -171,13 +193,14 @@ namespace Fjord.XRInteraction.XRUser
             }
 
             _userControllers.Add(addedController);
+            _registrationEvents.Added.Invoke(addedController);
         }
 
         public XRUserController GetController(Chirality chirality)
         {
             return _userControllers.Find(c => c.ControllerChirality == chirality);
         }
-        
+
         public void TweenTranslation(
             Vector3 translation,
             float speedMultiplier = 0,
@@ -185,9 +208,10 @@ namespace Fjord.XRInteraction.XRUser
             Action<Transform> step = null,
             Action<Transform> finished = null)
         {
-            GetComponent<TransformTweener>().ToPosition(transform.position + translation, speedMultiplier, easeCurve, step, finished);
+            GetComponent<TransformTweener>().ToPosition(transform.position + translation, speedMultiplier, easeCurve,
+                step, finished);
         }
-            
+
         public void TweenToPosition(
             Vector3 target,
             float speedMultiplier = 0,
@@ -197,14 +221,18 @@ namespace Fjord.XRInteraction.XRUser
         {
             GetComponent<TransformTweener>().ToPosition(target, speedMultiplier, easeCurve, step, finished);
         }
-        
+
+        private void InstantiateController()
+        {
+        }
+
         private string OpenVRTrackingSystemName()
         {
             ETrackedDeviceProperty prop = ETrackedDeviceProperty.Prop_TrackingSystemName_String;
             uint deviceId = OpenVR.k_unTrackedDeviceIndex_Hmd;
             var error = ETrackedPropertyError.TrackedProp_Success;
             var capactiy = OpenVR.System.GetStringTrackedDeviceProperty(deviceId, prop, null, 0, ref error);
-            var result = new System.Text.StringBuilder((int) capactiy);
+            var result = new System.Text.StringBuilder((int)capactiy);
             OpenVR.System.GetStringTrackedDeviceProperty(deviceId, prop, result, capactiy, ref error);
             return result.ToString();
         }
