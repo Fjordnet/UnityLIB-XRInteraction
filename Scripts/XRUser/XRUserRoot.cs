@@ -99,9 +99,9 @@ namespace Fjord.XRInteraction.XRUser
         private void InputTracking_trackingLost(XRNodeState nodeState)
         {
             XRUserController controller = _userControllers.Find(x => x.UniqueID == nodeState.uniqueID);
-            Debug.Log("InputTracking_trackingLost " + controller);
             if (controller != null)
             {
+                Debug.Log("InputTracking_trackingLost " + controller + " " + nodeState.uniqueID + " " + nodeState.nodeType);
                 _registrationEvents.TrackingLost.Invoke(controller);
             }
         }
@@ -109,9 +109,9 @@ namespace Fjord.XRInteraction.XRUser
         private void InputTracking_trackingAcquired(XRNodeState nodeState)
         {
             XRUserController controller = _userControllers.Find(x => x.UniqueID == nodeState.uniqueID);
-            Debug.Log("InputTracking_trackingAcquired " + controller);
             if (controller != null)
             {
+                Debug.Log("InputTracking_trackingAcquired " + controller + " " + nodeState.uniqueID + " " + nodeState.nodeType);
                 _registrationEvents.TrackingAcquired.Invoke(controller);
             }
         }
