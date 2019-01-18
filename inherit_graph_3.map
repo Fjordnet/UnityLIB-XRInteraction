@@ -1,0 +1,42 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title=" " alt="" coords="5,797,116,823"/>
+<area shape="rect" id="node2" href="$class_fjord_1_1_x_r_interaction_1_1_attachables_1_1_attachable.html" title=" " alt="" coords="171,5,379,47"/>
+<area shape="rect" id="node3" href="$class_fjord_1_1_x_r_interaction_1_1_attachables_1_1_attachable_holder.html" title=" " alt="" coords="171,71,379,112"/>
+<area shape="rect" id="node4" href="$class_fjord_1_1_x_r_interaction_1_1_attachables_1_1_attachable_visualizer.html" title=" " alt="" coords="171,136,379,177"/>
+<area shape="rect" id="node5" href="$class_fjord_1_1_x_r_interaction_1_1_attachables_1_1_guide_sequence.html" title=" " alt="" coords="171,201,379,243"/>
+<area shape="rect" id="node6" href="$class_fjord_1_1_x_r_interaction_1_1_attachables_1_1_guide_step.html" title=" " alt="" coords="171,267,379,308"/>
+<area shape="rect" id="node9" href="$class_fjord_1_1_x_r_interaction_1_1_attachables_1_1_torquable.html" title=" " alt="" coords="171,332,379,373"/>
+<area shape="rect" id="node10" href="$class_fjord_1_1_x_r_interaction_1_1_attachables_1_1_torque_tool.html" title=" " alt="" coords="171,397,379,439"/>
+<area shape="rect" id="node11" href="$class_fjord_1_1_x_r_interaction_1_1_examples_1_1_example_functions.html" title=" " alt="" coords="177,463,374,504"/>
+<area shape="rect" id="node12" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_haptics_1_1_x_r_haptic_engine.html" title="Implements Haptics on each platform. Implemented as a MonoBehaviour because depending on platform,..." alt="" coords="176,528,375,569"/>
+<area shape="rect" id="node15" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactions_1_1_x_r_interaction_event_receiver.html" title="Recieves events from Interactor. Implement, and override virtual OnRecieveEvent methods in order to c..." alt="" coords="164,593,387,635"/>
+<area shape="rect" id="node21" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactions_1_1_x_r_interaction_highlighter.html" title=" " alt="" coords="164,659,387,700"/>
+<area shape="rect" id="node22" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactors_1_1_x_r_flex_laser_visualizer.html" title="Visualizes a XRFlexLaserInteractor." alt="" coords="167,724,383,765"/>
+<area shape="rect" id="node23" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactors_1_1_x_r_interactor.html" title="Base class which searches for Interactions to send events to." alt="" coords="167,789,383,831"/>
+<area shape="rect" id="node29" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactors_1_1_x_r_laser_visualizer.html" title="Visualizes a XRLaserInteractor." alt="" coords="167,855,383,896"/>
+<area shape="rect" id="node30" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactors_1_1_x_r_proximity_visualizer.html" title="Visualizes a XRLaserInteractor." alt="" coords="167,920,383,961"/>
+<area shape="rect" id="node31" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactors_1_1_x_r_teleporter.html" title=" " alt="" coords="167,985,383,1027"/>
+<area shape="rect" id="node32" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactors_1_1_x_r_teleport_visualizer.html" title="Visualizes a XRFlexLaserInteractor." alt="" coords="167,1051,383,1092"/>
+<area shape="rect" id="node33" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactors_1_1_x_r_unity_u_i_laser_visualizer.html" title="Visualizes a XRUnityUILaserInteractor." alt="" coords="167,1116,383,1157"/>
+<area shape="rect" id="node34" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_u_i_1_1_x_r_canvas.html" title=" " alt="" coords="192,1181,359,1223"/>
+<area shape="rect" id="node35" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_u_i_1_1_x_r_head_u_i.html" title=" " alt="" coords="192,1247,359,1288"/>
+<area shape="rect" id="node36" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_user_1_1_x_r_controller_model.html" title=" " alt="" coords="184,1312,367,1353"/>
+<area shape="rect" id="node37" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_user_1_1_x_r_user_controller.html" title="Represents a single controller of the user in the environment. Groups multiple Interactors as childre..." alt="" coords="184,1377,367,1419"/>
+<area shape="rect" id="node38" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_user_1_1_x_r_user_head.html" title="Encapsulates all things related to the XR Users head and the user&#39;s VR camera." alt="" coords="184,1443,367,1484"/>
+<area shape="rect" id="node39" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_user_1_1_x_r_user_root.html" title="Main entry point to all things related to XR and the User. This component will construct the entire X..." alt="" coords="184,1508,367,1549"/>
+<area shape="rect" id="node40" href="$class_guide_analytics.html" title=" " alt="" coords="220,1574,331,1601"/>
+<area shape="rect" id="node7" href="$class_fjord_1_1_x_r_interaction_1_1_attachables_1_1_attachable_guide_step.html" title=" " alt="" coords="442,235,650,276"/>
+<area shape="rect" id="node8" href="$class_fjord_1_1_x_r_interaction_1_1_attachables_1_1_torquable_guide_step.html" title=" " alt="" coords="442,300,650,341"/>
+<area shape="rect" id="node13" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_haptics_1_1_open_v_r_haptic_engine.html" title=" " alt="" coords="447,397,645,439"/>
+<area shape="rect" id="node14" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_haptics_1_1_w_m_r_haptic_engine.html" title=" " alt="" coords="447,463,645,504"/>
+<area shape="rect" id="node16" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactions_1_1_x_r_button_interaction.html" title=" " alt="" coords="435,528,657,569"/>
+<area shape="rect" id="node17" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactions_1_1_x_r_physics_interaction.html" title="Implements common functionality for any interaction which rests on rigidbody and can interface with t..." alt="" coords="435,593,657,635"/>
+<area shape="rect" id="node19" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactions_1_1_x_r_spawner_interaction.html" title=" " alt="" coords="435,659,657,700"/>
+<area shape="rect" id="node20" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactions_1_1_x_r_turntable_interaction.html" title=" " alt="" coords="435,724,657,765"/>
+<area shape="rect" id="node18" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_user_1_1_x_r_free_movement_interaction.html" title="Accepts one or two controllers inputs and responds appropriately to position and rotation in free mov..." alt="" coords="722,593,905,635"/>
+<area shape="rect" id="node24" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactors_1_1_x_r_physics_interactor.html" title="Base class which searches for Interactions to send events to." alt="" coords="438,789,654,831"/>
+<area shape="rect" id="node28" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactors_1_1_x_r_unity_u_i_laser_interactor.html" title="This connects the XR Controllers to the Unity UI. The UI must have a XRCanvas on it in order to recei..." alt="" coords="438,855,654,896"/>
+<area shape="rect" id="node25" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactors_1_1_x_r_laser_interactor.html" title="Sends XRInput events from a raycast &quot;Laser&quot;." alt="" coords="705,756,921,797"/>
+<area shape="rect" id="node27" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactors_1_1_x_r_proximity_interactor.html" title="Sends XRInput events based on proximity via OverlapSphere." alt="" coords="705,821,921,863"/>
+<area shape="rect" id="node26" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactors_1_1_x_r_flex_laser_interactor.html" title=" " alt="" coords="969,756,1185,797"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="Valve.VR.Compositor_FrameTiming" name="Valve.VR.Compositor_FrameTiming">
+<area shape="rect" id="node1" title=" " alt="" coords="109,199,254,240"/>
+<area shape="rect" id="node2" href="$struct_valve_1_1_v_r_1_1_tracked_device_pose__t.html" title=" " alt="" coords="79,109,283,136"/>
+<area shape="rect" id="node3" href="$struct_valve_1_1_v_r_1_1_hmd_vector3__t.html" title=" " alt="" coords="5,5,168,32"/>
+<area shape="rect" id="node4" href="$struct_valve_1_1_v_r_1_1_hmd_matrix34__t.html" title=" " alt="" coords="193,5,359,32"/>
+</map>

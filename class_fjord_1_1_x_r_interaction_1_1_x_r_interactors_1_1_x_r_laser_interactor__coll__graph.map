@@ -1,0 +1,9 @@
+<map id="Fjord.XRInteraction.XRInteractors.XRLaserInteractor" name="Fjord.XRInteraction.XRInteractors.XRLaserInteractor">
+<area shape="rect" id="node1" title="Sends XRInput events from a raycast &quot;Laser&quot;." alt="" coords="872,83,1088,125"/>
+<area shape="rect" id="node2" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactors_1_1_x_r_physics_interactor.html" title="Base class which searches for Interactions to send events to." alt="" coords="476,64,615,91"/>
+<area shape="rect" id="node3" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactors_1_1_x_r_interactor.html" title="Base class which searches for Interactions to send events to." alt="" coords="210,5,302,32"/>
+<area shape="rect" id="node4" title=" " alt="" coords="5,5,116,32"/>
+<area shape="rect" id="node5" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_unity_events_1_1_x_r_interactor_events.html" title=" " alt="" coords="165,57,347,98"/>
+<area shape="rect" id="node6" href="$class_fjord_1_1_x_r_interaction_1_1_comparers_1_1_raycast_hit_distance_comparer.html" title=" " alt="" coords="444,115,647,157"/>
+<area shape="rect" id="node7" title=" " alt="" coords="171,123,341,149"/>
+</map>

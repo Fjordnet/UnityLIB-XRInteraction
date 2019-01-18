@@ -1,0 +1,9 @@
+<map id="Fjord.XRInteraction.XRInteractions.XRInteractionEventReceiver" name="Fjord.XRInteraction.XRInteractions.XRInteractionEventReceiver">
+<area shape="rect" id="node1" title="Recieves events from Interactor. Implement, and override virtual OnRecieveEvent methods in order to c..." alt="" coords="164,104,387,145"/>
+<area shape="rect" id="node3" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactions_1_1_x_r_button_interaction.html" title=" " alt="" coords="435,5,657,47"/>
+<area shape="rect" id="node4" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactions_1_1_x_r_physics_interaction.html" title="Implements common functionality for any interaction which rests on rigidbody and can interface with t..." alt="" coords="435,71,657,112"/>
+<area shape="rect" id="node6" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactions_1_1_x_r_spawner_interaction.html" title=" " alt="" coords="435,136,657,177"/>
+<area shape="rect" id="node7" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactions_1_1_x_r_turntable_interaction.html" title=" " alt="" coords="435,201,657,243"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,111,116,138"/>
+<area shape="rect" id="node5" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_user_1_1_x_r_free_movement_interaction.html" title="Accepts one or two controllers inputs and responds appropriately to position and rotation in free mov..." alt="" coords="705,71,888,112"/>
+</map>

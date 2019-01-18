@@ -1,0 +1,6 @@
+<map id="Fjord.XRInteraction.XRHaptics.XRHapticEngine" name="Fjord.XRInteraction.XRHaptics.XRHapticEngine">
+<area shape="rect" id="node1" title="Implements Haptics on each platform. Implemented as a MonoBehaviour because depending on platform,..." alt="" coords="164,39,363,80"/>
+<area shape="rect" id="node3" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_haptics_1_1_open_v_r_haptic_engine.html" title=" " alt="" coords="411,5,609,47"/>
+<area shape="rect" id="node4" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_haptics_1_1_w_m_r_haptic_engine.html" title=" " alt="" coords="411,71,609,112"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,46,116,73"/>
+</map>

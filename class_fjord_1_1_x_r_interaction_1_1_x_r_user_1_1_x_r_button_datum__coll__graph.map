@@ -1,0 +1,8 @@
+<map id="Fjord.XRInteraction.XRUser.XRButtonDatum" name="Fjord.XRInteraction.XRUser.XRButtonDatum">
+<area shape="rect" id="node1" title="Stores data unique to each button press that runs through an Interactor." alt="" coords="939,32,1121,73"/>
+<area shape="rect" id="node2" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_user_1_1_x_r_user_controller.html" title="Represents a single controller of the user in the environment. Groups multiple Interactors as childre..." alt="" coords="371,5,553,47"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,34,116,61"/>
+<area shape="rect" id="node5" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactors_1_1_x_r_interactor.html" title="Base class which searches for Interactions to send events to." alt="" coords="210,63,302,90"/>
+<area shape="rect" id="node4" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactors_1_1_x_r_physics_interactor.html" title="Base class which searches for Interactions to send events to." alt="" coords="577,75,793,116"/>
+<area shape="rect" id="node6" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_unity_events_1_1_x_r_interactor_events.html" title=" " alt="" coords="165,115,347,156"/>
+</map>

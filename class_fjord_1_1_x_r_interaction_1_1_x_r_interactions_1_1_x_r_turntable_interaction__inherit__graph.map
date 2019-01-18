@@ -1,0 +1,5 @@
+<map id="Fjord.XRInteraction.XRInteractions.XRTurntableInteraction" name="Fjord.XRInteraction.XRInteractions.XRTurntableInteraction">
+<area shape="rect" id="node1" title=" " alt="" coords="5,155,228,196"/>
+<area shape="rect" id="node2" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactions_1_1_x_r_interaction_event_receiver.html" title="Recieves events from Interactor. Implement, and override virtual OnRecieveEvent methods in order to c..." alt="" coords="27,80,206,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="61,5,172,32"/>
+</map>

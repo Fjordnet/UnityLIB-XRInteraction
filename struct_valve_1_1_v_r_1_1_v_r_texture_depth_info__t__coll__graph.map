@@ -1,0 +1,5 @@
+<map id="Valve.VR.VRTextureDepthInfo_t" name="Valve.VR.VRTextureDepthInfo_t">
+<area shape="rect" id="node1" title=" " alt="" coords="81,95,286,121"/>
+<area shape="rect" id="node2" href="$struct_valve_1_1_v_r_1_1_hmd_matrix44__t.html" title=" " alt="" coords="5,5,172,32"/>
+<area shape="rect" id="node3" href="$struct_valve_1_1_v_r_1_1_hmd_vector2__t.html" title=" " alt="" coords="197,5,359,32"/>
+</map>

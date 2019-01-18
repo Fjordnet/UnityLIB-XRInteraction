@@ -1,0 +1,4 @@
+<map id="Fjord.XRInteraction.XRUI.XRInputModule" name="Fjord.XRInteraction.XRUI.XRInputModule">
+<area shape="rect" id="node1" title="Use in place of StandAloneInputModule for UI to work XR controllers." alt="" coords="5,80,172,121"/>
+<area shape="rect" id="node2" title=" " alt="" coords="10,5,167,32"/>
+</map>

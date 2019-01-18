@@ -1,0 +1,5 @@
+<map id="Fjord.XRInteraction.XRInteractors.XRUnityUILaserInteractor" name="Fjord.XRInteraction.XRInteractors.XRUnityUILaserInteractor">
+<area shape="rect" id="node1" title="This connects the XR Controllers to the Unity UI. The UI must have a XRCanvas on it in order to recei..." alt="" coords="5,155,221,196"/>
+<area shape="rect" id="node2" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactors_1_1_x_r_interactor.html" title="Base class which searches for Interactions to send events to." alt="" coords="67,80,159,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="58,5,169,32"/>
+</map>

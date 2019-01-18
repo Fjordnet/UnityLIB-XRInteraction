@@ -1,0 +1,6 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title=" " alt="" coords="5,78,124,105"/>
+<area shape="rect" id="node2" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_haptics_1_1_x_r_haptic_map.html" title=" " alt="" coords="172,5,371,47"/>
+<area shape="rect" id="node3" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_input_1_1_x_r_input_map.html" title="Contains multiple XRInputMap&#39;s to describe how all inputs an XR Controller should route through an IX..." alt="" coords="180,71,363,112"/>
+<area shape="rect" id="node4" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_user_1_1_x_r_user_root_config.html" title=" " alt="" coords="180,136,363,177"/>
+</map>

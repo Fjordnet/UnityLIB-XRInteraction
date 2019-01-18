@@ -1,0 +1,8 @@
+<map id="Fjord.XRInteraction.XRInteractors.XRPhysicsInteractor" name="Fjord.XRInteraction.XRInteractors.XRPhysicsInteractor">
+<area shape="rect" id="node1" title="Base class which searches for Interactions to send events to." alt="" coords="304,39,520,80"/>
+<area shape="rect" id="node4" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactors_1_1_x_r_laser_interactor.html" title="Sends XRInput events from a raycast &quot;Laser&quot;." alt="" coords="568,5,784,47"/>
+<area shape="rect" id="node6" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactors_1_1_x_r_proximity_interactor.html" title="Sends XRInput events based on proximity via OverlapSphere." alt="" coords="568,71,784,112"/>
+<area shape="rect" id="node2" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactors_1_1_x_r_interactor.html" title="Base class which searches for Interactions to send events to." alt="" coords="164,46,256,73"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,46,116,73"/>
+<area shape="rect" id="node5" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactors_1_1_x_r_flex_laser_interactor.html" title=" " alt="" coords="832,5,1048,47"/>
+</map>

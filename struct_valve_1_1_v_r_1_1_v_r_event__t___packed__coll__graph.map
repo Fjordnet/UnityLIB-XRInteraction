@@ -1,0 +1,26 @@
+<map id="Valve.VR.VREvent_t_Packed" name="Valve.VR.VREvent_t_Packed">
+<area shape="rect" id="node1" title=" " alt="" coords="673,617,813,658"/>
+<area shape="rect" id="node2" href="$struct_valve_1_1_v_r_1_1_v_r_event___data__t.html" title=" " alt="" coords="421,624,596,651"/>
+<area shape="rect" id="node3" href="$struct_valve_1_1_v_r_1_1_v_r_event___editing_camera_surface__t.html" title=" " alt="" coords="35,15,211,57"/>
+<area shape="rect" id="node4" href="$struct_valve_1_1_v_r_1_1_v_r_event___dual_analog__t.html" title=" " alt="" coords="16,81,229,108"/>
+<area shape="rect" id="node5" href="$struct_valve_1_1_v_r_1_1_v_r_event___overlay__t.html" title=" " alt="" coords="27,132,218,159"/>
+<area shape="rect" id="node6" href="$struct_valve_1_1_v_r_1_1_v_r_event___mouse__t.html" title=" " alt="" coords="29,183,216,209"/>
+<area shape="rect" id="node7" href="$struct_valve_1_1_v_r_1_1_v_r_event___screenshot_progress__t.html" title=" " alt="" coords="21,234,224,275"/>
+<area shape="rect" id="node8" href="$struct_valve_1_1_v_r_1_1_v_r_event___message_overlay__t.html" title=" " alt="" coords="28,299,217,341"/>
+<area shape="rect" id="node9" href="$struct_valve_1_1_v_r_1_1_v_r_event___application_launch__t.html" title=" " alt="" coords="23,365,223,406"/>
+<area shape="rect" id="node10" href="$struct_valve_1_1_v_r_1_1_v_r_event___notification__t.html" title=" " alt="" coords="17,431,228,457"/>
+<area shape="rect" id="node11" href="$struct_valve_1_1_v_r_1_1_v_r_event___keyboard__t.html" title=" " alt="" coords="21,481,224,508"/>
+<area shape="rect" id="node12" href="$struct_valve_1_1_v_r_1_1_v_r_event___haptic_vibration__t.html" title=" " alt="" coords="5,532,240,559"/>
+<area shape="rect" id="node13" href="$struct_valve_1_1_v_r_1_1_v_r_event___performance_test__t.html" title=" " alt="" coords="18,583,227,625"/>
+<area shape="rect" id="node14" href="$struct_valve_1_1_v_r_1_1_v_r_event___seated_zero_pose_reset__t.html" title=" " alt="" coords="21,649,224,690"/>
+<area shape="rect" id="node15" href="$struct_valve_1_1_v_r_1_1_v_r_event___chaperone__t.html" title=" " alt="" coords="18,715,227,741"/>
+<area shape="rect" id="node16" href="$struct_valve_1_1_v_r_1_1_v_r_event___property__t.html" title=" " alt="" coords="25,765,221,792"/>
+<area shape="rect" id="node17" href="$struct_valve_1_1_v_r_1_1_v_r_event___ipd__t.html" title=" " alt="" coords="41,816,205,843"/>
+<area shape="rect" id="node18" href="$struct_valve_1_1_v_r_1_1_v_r_event___status__t.html" title=" " alt="" coords="30,867,215,893"/>
+<area shape="rect" id="node19" href="$struct_valve_1_1_v_r_1_1_v_r_event___controller__t.html" title=" " alt="" coords="21,917,224,944"/>
+<area shape="rect" id="node20" href="$struct_valve_1_1_v_r_1_1_v_r_event___reserved__t.html" title=" " alt="" coords="23,968,223,995"/>
+<area shape="rect" id="node21" href="$struct_valve_1_1_v_r_1_1_v_r_event___screenshot__t.html" title=" " alt="" coords="16,1019,229,1045"/>
+<area shape="rect" id="node22" href="$struct_valve_1_1_v_r_1_1_v_r_event___touch_pad_move__t.html" title=" " alt="" coords="25,1070,220,1111"/>
+<area shape="rect" id="node23" href="$struct_valve_1_1_v_r_1_1_v_r_event___process__t.html" title=" " alt="" coords="25,1136,220,1163"/>
+<area shape="rect" id="node24" href="$struct_valve_1_1_v_r_1_1_v_r_event___scroll__t.html" title=" " alt="" coords="33,1187,213,1213"/>
+</map>

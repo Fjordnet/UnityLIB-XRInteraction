@@ -1,0 +1,4 @@
+<map id="Fjord.XRInteraction.XRInput.Axis1DProcessor" name="Fjord.XRInteraction.XRInput.Axis1DProcessor">
+<area shape="rect" id="node1" title="Returns axis 1D values." alt="" coords="5,80,188,121"/>
+<area shape="rect" id="node2" href="$interface_fjord_1_1_x_r_interaction_1_1_x_r_input_1_1_i_x_r_input_processor.html" title="Unified interface which describes all events, and data, any type of input would need (e...." alt="" coords="33,5,161,32"/>
+</map>

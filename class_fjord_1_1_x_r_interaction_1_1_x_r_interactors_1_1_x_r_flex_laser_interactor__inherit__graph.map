@@ -1,0 +1,7 @@
+<map id="Fjord.XRInteraction.XRInteractors.XRFlexLaserInteractor" name="Fjord.XRInteraction.XRInteractors.XRFlexLaserInteractor">
+<area shape="rect" id="node1" title=" " alt="" coords="5,304,221,345"/>
+<area shape="rect" id="node2" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactors_1_1_x_r_laser_interactor.html" title="Sends XRInput events from a raycast &quot;Laser&quot;." alt="" coords="51,229,175,256"/>
+<area shape="rect" id="node3" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactors_1_1_x_r_physics_interactor.html" title="Base class which searches for Interactions to send events to." alt="" coords="44,155,183,181"/>
+<area shape="rect" id="node4" href="$class_fjord_1_1_x_r_interaction_1_1_x_r_interactors_1_1_x_r_interactor.html" title="Base class which searches for Interactions to send events to." alt="" coords="67,80,159,107"/>
+<area shape="rect" id="node5" title=" " alt="" coords="58,5,169,32"/>
+</map>

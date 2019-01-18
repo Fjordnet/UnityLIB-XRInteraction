@@ -1,0 +1,5 @@
+<map id="Valve.VR.VROverlayIntersectionMaskPrimitive_Data_t" name="Valve.VR.VROverlayIntersectionMaskPrimitive_Data_t">
+<area shape="rect" id="node1" title=" " alt="" coords="93,109,299,151"/>
+<area shape="rect" id="node2" href="$struct_valve_1_1_v_r_1_1_intersection_mask_circle__t.html" title=" " alt="" coords="5,5,184,47"/>
+<area shape="rect" id="node3" href="$struct_valve_1_1_v_r_1_1_intersection_mask_rectangle__t.html" title=" " alt="" coords="208,5,387,47"/>
+</map>

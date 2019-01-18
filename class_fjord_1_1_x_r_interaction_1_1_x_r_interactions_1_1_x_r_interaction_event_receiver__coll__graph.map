@@ -1,0 +1,4 @@
+<map id="Fjord.XRInteraction.XRInteractions.XRInteractionEventReceiver" name="Fjord.XRInteraction.XRInteractions.XRInteractionEventReceiver">
+<area shape="rect" id="node1" title="Recieves events from Interactor. Implement, and override virtual OnRecieveEvent methods in order to c..." alt="" coords="5,80,228,121"/>
+<area shape="rect" id="node2" title=" " alt="" coords="61,5,172,32"/>
+</map>
