@@ -25,6 +25,12 @@ git submodule add https://github.com/Fjordnet/UnityLIB-XRInteraction.git Assets/
 git submodule add https://github.com/Fjordnet/UnityLIB-Common.git Assets/Fjord/UnityLIB-Common
 ```
 
+2. Open project, and enable VR support in Edit menu > Project Settings > Player, XR Settings panel 'Virtual Reality Supported' checkbox. Remove 'Oculus' from the Virtual Reality SDKs list if it is auto-added.
+
+3. In Unity version 2018.3, OpenVR (Standalone) is now a package in the Unity Package Manager. Go to Window menu > Package Manager and install the 'Open VR (Standalone)' package.
+
+4. Re-open the project to ensure all dependencies are loaded.
+
 ###### Setting up a User.
 
 1. Drag the 'StandardUserRoot' prefab into your scene.
