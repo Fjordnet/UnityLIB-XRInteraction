@@ -4,60 +4,59 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[InitializeOnLoad]
-public class InitializeXRInteractionEditor : Editor
+namespace Fjord.XRInteraction
 {
-    static List<string> tagsToAdd = new List<string>
+    [InitializeOnLoad]
+    public class InitializeXRInteractionEditor : Editor
     {
-        "XRLaser",
-        "XRProximity",
-        "XRTeleport"
-    };
-
-    static InitializeXRInteractionEditor()
-    {
-        Debug.Log("Initializing XRInteraction library...");
-
-        UpdateTagList();
-
-        Debug.Log("XRInteraction library initialized.");
-    }
-
-    static void UpdateTagList()
-    {
-        SerializedObject tagManager = new SerializedObject(
-            AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/TagManager.asset")
-        );
-        SerializedProperty tagsProp = tagManager.FindProperty("tags");
-        
-        foreach (string tagText in tagsToAdd)
+        static List<string> tagsToAdd = new List<string>
         {
-            FindOrAddTag(tagsProp, tagText);
+            "XRLaser",
+            "XRProximity",
+            "XRTeleport"
+        };
+
+        static InitializeXRInteractionEditor()
+        {
+            UpdateTagList();
         }
-        tagManager.ApplyModifiedProperties();
-    }
 
-    static void FindOrAddTag(SerializedProperty tagsProp, string text)
-    {
-        bool foundTag = false;
-        for (int i=0; i < tagsProp.arraySize; i++)
+        static void UpdateTagList()
         {
-            SerializedProperty existingTag = tagsProp.GetArrayElementAtIndex(i);
-
-            // Already exists, exit
-            if (existingTag.stringValue.Equals(text))
+            SerializedObject tagManager = new SerializedObject(
+                AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/TagManager.asset")
+            );
+            SerializedProperty tagsProp = tagManager.FindProperty("tags");
+            
+            foreach (string tagText in tagsToAdd)
             {
-                foundTag = true;
-                break;
+                FindOrAddTag(tagsProp, tagText);
             }
+            tagManager.ApplyModifiedProperties();
         }
 
-        if (!foundTag)
+        static void FindOrAddTag(SerializedProperty tagsProp, string text)
         {
-            tagsProp.arraySize++;
-            SerializedProperty newTag = tagsProp.GetArrayElementAtIndex(tagsProp.arraySize-1);
-            newTag.stringValue = text;
-            Debug.LogFormat("XRInteraction Tags: Added tag {0} to project at index {1}.", text, tagsProp.arraySize);
+            bool foundTag = false;
+            for (int i=0; i < tagsProp.arraySize; i++)
+            {
+                SerializedProperty existingTag = tagsProp.GetArrayElementAtIndex(i);
+
+                // Already exists, exit
+                if (existingTag.stringValue.Equals(text))
+                {
+                    foundTag = true;
+                    break;
+                }
+            }
+
+            if (!foundTag)
+            {
+                tagsProp.arraySize++;
+                SerializedProperty newTag = tagsProp.GetArrayElementAtIndex(tagsProp.arraySize-1);
+                newTag.stringValue = text;
+                Debug.LogFormat("XRInteraction Tags: Added tag {0} to project at index {1}.", text, tagsProp.arraySize);
+            }
         }
     }
 }
