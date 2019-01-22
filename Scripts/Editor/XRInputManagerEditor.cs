@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.XR;
 
-namespace Fjord.XRInteraction
+namespace Fjord.XRInteraction.EditorScripts
 {
     public static class XRInputManagerEditor
     {

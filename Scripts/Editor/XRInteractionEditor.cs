@@ -10,7 +10,7 @@ using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace Fjord.XRInteraction
+namespace Fjord.XRInteraction.EditorScripts
 {
     public static class XRInteractionEditor
     {
