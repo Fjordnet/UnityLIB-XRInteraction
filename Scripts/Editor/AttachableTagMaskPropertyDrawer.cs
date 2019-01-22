@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace Fjord.XRInteraction
+namespace Fjord.XRInteraction.Editor
 {
     [CustomPropertyDrawer(typeof(AttachableTagMask))]
     public class AttachableTagMaskPropertyDrawer : CustomTagMaskPropertyDrawer
