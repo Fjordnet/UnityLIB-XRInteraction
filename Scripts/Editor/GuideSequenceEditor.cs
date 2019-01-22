@@ -10,7 +10,7 @@ using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace Fjord.Common
+namespace Fjord.XRInteraction
 {
     [CustomEditor(typeof(GuideSequence))]
     public class GuideSequenceEditor : Editor

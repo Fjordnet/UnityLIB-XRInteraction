@@ -9,7 +9,7 @@ using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace Fjord.Common
+namespace Fjord.XRInteraction
 {
     [CustomEditor(typeof(XRInputMap))]
     public class XRInputMapEditor : Editor
