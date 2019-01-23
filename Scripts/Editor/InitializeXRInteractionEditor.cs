@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace Fjord.XRInteraction
+namespace Fjord.XRInteraction.EditorScripts
 {
     [InitializeOnLoad]
     public class InitializeXRInteractionEditor : Editor

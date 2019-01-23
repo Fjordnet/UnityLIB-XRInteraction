@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Fjord.Common;
 using Fjord.Common.Data;
 using Fjord.Common.Types;
 using Fjord.XRInteraction.XRInput;
@@ -8,7 +9,7 @@ using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace Fjord.Common
+namespace Fjord.XRInteraction.EditorScripts
 {
     [CustomPropertyDrawer(typeof(XRInputNameList))]
     public class XRInputNameListPropertyDrawer : PropertyDrawer

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Fjord.Common;
 using Fjord.Common.Data;
 using Fjord.Common.Types;
 using Fjord.XRInteraction.XRInput;
@@ -9,7 +10,7 @@ using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace Fjord.Common
+namespace Fjord.XRInteraction.EditorScripts
 {
     [CustomEditor(typeof(XRInputMap))]
     public class XRInputMapEditor : Editor
