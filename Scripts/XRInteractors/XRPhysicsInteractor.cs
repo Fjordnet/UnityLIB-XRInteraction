@@ -46,6 +46,9 @@ namespace Fjord.XRInteraction.XRInteractors
         [SerializeField]
         protected XRInteractorEvents _events = new XRInteractorEvents();
 
+        [SerializeField]
+        private float _dragTickSteps = .8f;
+
         protected const int SearchCacheSize = 8;
         protected readonly Dictionary<int, XRButtonDatum> ButtonDatums = new Dictionary<int, XRButtonDatum>();
         private readonly List<XRButtonDatum> _heldButtons = new List<XRButtonDatum>();
@@ -452,7 +455,7 @@ namespace Fjord.XRInteraction.XRInteractors
             if (holdOccured && _dragHaptics)
             {
                 _accumulatedDelta += datum.PressColliderPositionChildedToControllerDelta.magnitude;
-                if (_accumulatedDelta > .2f)
+                if (_accumulatedDelta > _dragTickSteps)
                 {
                     _accumulatedDelta = 0;
                     ParentUserController.FireHapticKey("DragTick");

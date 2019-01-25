@@ -14,25 +14,25 @@ MonoBehaviour:
   _descriptions:
   - _hapticKey: Enter
     _hapticNormalizedIntensity: 0.4
-    _hapticDuration: 0.01
+    _hapticDuration: 0.1
   - _hapticKey: Exit
     _hapticNormalizedIntensity: 0.2
-    _hapticDuration: 0.01
+    _hapticDuration: 0.1
   - _hapticKey: Press
     _hapticNormalizedIntensity: 0.8
-    _hapticDuration: 0.02
+    _hapticDuration: 0.1
   - _hapticKey: Release
     _hapticNormalizedIntensity: 0.4
-    _hapticDuration: 0.06
+    _hapticDuration: 0.1
   - _hapticKey: DragTick
-    _hapticNormalizedIntensity: 0.2
-    _hapticDuration: 0.001
+    _hapticNormalizedIntensity: 0.3
+    _hapticDuration: 0.1
   - _hapticKey: SmallTick
     _hapticNormalizedIntensity: 0.1
-    _hapticDuration: 0.001
+    _hapticDuration: 0.1
   - _hapticKey: MidTick
     _hapticNormalizedIntensity: 0.5
-    _hapticDuration: 0.001
+    _hapticDuration: 0.1
   - _hapticKey: BigTick
     _hapticNormalizedIntensity: 1
-    _hapticDuration: 0.001
+    _hapticDuration: 0.1

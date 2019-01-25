@@ -27,6 +27,24 @@ namespace Fjord.XRInteraction.XRUI
             GetComponent<EventSystem>().pixelDragThreshold = 20;
         }
 
+        public override void ActivateModule()
+        {
+            base.ActivateModule();
+        }
+
+        public override void DeactivateModule()
+        {
+            base.DeactivateModule();
+            for (int i = 1; i < 3; ++i)
+            {
+                XRUserController userController = UserRoot.GetController((Chirality)i);                
+                bool released;
+                bool pressed;
+                var pointer = GetTouchPointerEventData(userController.UnityUIInteractor, out pressed, out released);
+                userController.UnityUIInteractor.UpdatePointerEventData(pointer, false, true);
+            }
+        }
+        
         /// <summary>
         /// Copied from StandaloneInputModule - Majority has been edited.
         /// </summary>

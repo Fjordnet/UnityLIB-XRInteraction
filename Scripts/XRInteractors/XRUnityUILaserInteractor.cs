@@ -39,6 +39,9 @@ namespace Fjord.XRInteraction.XRInteractors
         private PointerEventDataEvents _events;
 
         [SerializeField]
+        private float _dragTickSteps = 2500;
+
+        [SerializeField]
         private float _pointerPositionDamp = .1f;
 
         [SerializeField]
@@ -183,8 +186,8 @@ namespace Fjord.XRInteraction.XRInteractors
 
             if (eventData.dragging && eventData.pointerCurrentRaycast.gameObject != null)
             {
-                _cumulatedDelta += DeltaInScreen.sqrMagnitude;
-                if (_cumulatedDelta > 200)
+                _cumulatedDelta += DeltaInScreen.magnitude;
+                if (_cumulatedDelta > _dragTickSteps)
                 {
                     _cumulatedDelta = 0;
                     ParentUserController.FireHapticKey("DragTick");
