@@ -1,4 +1,4 @@
-﻿using Fjord.Common.Types;
+using Fjord.Common.Types;
 using Fjord.XRInteraction.XRInteractors;
 using Fjord.XRInteraction.XRUser;
 using UnityEngine;
@@ -12,6 +12,7 @@ namespace Fjord.XRInteraction.XRUI
     public class XRInputModule : StandaloneInputModule
     {
         private XRUserRoot _userRoot;
+        private bool _isQuiting;
 
         private XRUserRoot UserRoot
         {
@@ -27,6 +28,11 @@ namespace Fjord.XRInteraction.XRUI
             GetComponent<EventSystem>().pixelDragThreshold = 20;
         }
 
+        private void OnApplicationQuit()
+        {
+            _isQuiting = true;
+        }
+
         public override void ActivateModule()
         {
             base.ActivateModule();
@@ -35,16 +41,19 @@ namespace Fjord.XRInteraction.XRUI
         public override void DeactivateModule()
         {
             base.DeactivateModule();
+
+            if (_isQuiting) return;
+
             for (int i = 1; i < 3; ++i)
             {
-                XRUserController userController = UserRoot.GetController((Chirality)i);                
+                XRUserController userController = UserRoot.GetController((Chirality)i);
                 bool released;
                 bool pressed;
                 var pointer = GetTouchPointerEventData(userController.UnityUIInteractor, out pressed, out released);
                 userController.UnityUIInteractor.UpdatePointerEventData(pointer, false, true);
             }
         }
-        
+
         /// <summary>
         /// Copied from StandaloneInputModule - Majority has been edited.
         /// </summary>
@@ -73,13 +82,13 @@ namespace Fjord.XRInteraction.XRUI
             {
                 XRUserController userController = UserRoot.GetController((Chirality)i);
 
-                if (null == userController || null == userController.UnityUIInteractor) 
+                if (null == userController || null == userController.UnityUIInteractor)
                     continue;
-                
+
                 bool released;
                 bool pressed;
                 var pointer = GetTouchPointerEventData(userController.UnityUIInteractor, out pressed, out released);
-                
+
                 ProcessTouchPress(pointer, pressed, released);
 
                 if (!released)
@@ -105,7 +114,7 @@ namespace Fjord.XRInteraction.XRUI
             var created = GetPointerData(chiralityId, out pointerData, true);
 
             bool enabled = uiLaserInteractor.enabled && uiLaserInteractor.gameObject.activeSelf;
-            
+
             pointerData.Reset();
 
             if (enabled)
@@ -134,7 +143,7 @@ namespace Fjord.XRInteraction.XRUI
             else
             {
                 pressed = false;
-                
+
                 if (null != pointerData.pointerPress)
                 {
                     released = true;
@@ -143,7 +152,7 @@ namespace Fjord.XRInteraction.XRUI
                 {
                     released = false;
                 }
-                
+
                 pointerData.pointerCurrentRaycast = new RaycastResult();
             }
 
