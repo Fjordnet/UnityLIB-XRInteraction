@@ -60,7 +60,7 @@ namespace Fjord.XRInteraction.Attachables
                 GameObject lineRendererGame = new GameObject("LineRenderer" + i);
                 lineRendererGame.hideFlags = HideFlags.HideAndDontSave;
                 _lineRenderers[i] = lineRendererGame.AddComponent<LineRenderer>();
-                _lineRenderers[i].castShadows = false;
+                _lineRenderers[i].shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
                 _lineRenderers[i].receiveShadows = false;
                 _lineRenderers[i].colorGradient = _lineGradient.Gradient;
                 _lineRenderers[i].widthMultiplier = _lineWidth;
