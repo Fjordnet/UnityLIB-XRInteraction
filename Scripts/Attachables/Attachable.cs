@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Fjord.Common.Extensions;
 using Fjord.XRInteraction.XRInteractions;
@@ -161,6 +161,7 @@ namespace Fjord.XRInteraction.Attachables
         public void ResetIsKinematicState()
         {
             if (null != AttachedRigidbody) AttachedRigidbody.isKinematic = _initialIsKinematicState;
+            if (null != MovementInteraction) MovementInteraction.RetainIsKinematic = false;
         }
 
         public void SetPositionRotationTo(Transform targetTransform)
