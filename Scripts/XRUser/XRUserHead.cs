@@ -68,7 +68,8 @@ namespace Fjord.XRInteraction.XRUser
         /// </summary>
         private bool ShouldFadeFromCollider(Collider other)
         {
-            return ((_fadeOutOnEnterLayers & other.gameObject.layer) == other.gameObject.layer) &&
+            var layerConverted = 1 << other.gameObject.layer;
+            return ((_fadeOutOnEnterLayers & layerConverted) == layerConverted) &&
                    other.attachedRigidbody == null &&
                    !other.isTrigger;
         }
