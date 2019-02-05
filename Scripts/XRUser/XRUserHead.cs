@@ -47,6 +47,8 @@ namespace Fjord.XRInteraction.XRUser
         {
             if (ShouldFadeFromCollider(other))
             {
+                _headInColliders.RemoveAll(x => x == null); // If we've loaded a new scene and we were colliding in the previous, clear all empty colliders
+
                 _headInColliders.Add(other);
                 if (_headInColliders.Count == 1) _headUI.FadeOutView();
             }
