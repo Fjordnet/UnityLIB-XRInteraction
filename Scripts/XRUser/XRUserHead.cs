@@ -42,20 +42,14 @@ namespace Fjord.XRInteraction.XRUser
         {
             _headCamera = GetComponent<Camera>();
             _headUI = GetComponentInChildren<XRHeadUI>();
-            SceneManager.sceneUnloaded += SceneManagerOnSceneUnloaded;
         }
-
-        private void SceneManagerOnSceneUnloaded(Scene arg0)
-        {
-            _headInColliders.RemoveAll(x => x == null);
-            if (_headInColliders.Count == 0) _headUI.FadeInView();
-        }
-
+        
         private void OnTriggerEnter(Collider other)
         {
             if (ShouldFadeFromCollider(other))
             {
-                //should probably subscribe to the obects OnDestroy in some manner
+                //should probably subscribe to the objects OnDestroy in some manner
+                //OR switch to sphereoverlap every frame from head? 
                 _headInColliders.RemoveAll(x => x == null);
 
                 _headInColliders.Add(other);
