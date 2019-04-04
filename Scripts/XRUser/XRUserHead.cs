@@ -1,10 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using Fjord.Common.Extensions;
+﻿using System.Collections.Generic;
 using Fjord.XRInteraction.XRUI;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Fjord.XRInteraction.XRUser
 {
@@ -42,11 +38,15 @@ namespace Fjord.XRInteraction.XRUser
             _headCamera = GetComponent<Camera>();
             _headUI = GetComponentInChildren<XRHeadUI>();
         }
-
+        
         private void OnTriggerEnter(Collider other)
         {
             if (ShouldFadeFromCollider(other))
             {
+                //should probably subscribe to the objects OnDestroy in some manner
+                //OR switch to sphereoverlap every frame from head? 
+                _headInColliders.RemoveAll(x => x == null);
+
                 _headInColliders.Add(other);
                 if (_headInColliders.Count == 1) _headUI.FadeOutView();
             }
