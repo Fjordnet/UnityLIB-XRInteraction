@@ -1,11 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using Fjord.Common.Extensions;
+﻿using System.Collections.Generic;
 using Fjord.XRInteraction.XRUI;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace Fjord.XRInteraction.XRUser
 {
