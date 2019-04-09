@@ -62,6 +62,7 @@ namespace Fjord.XRInteraction.XRInteractors
         private Ray _currentHitRay;
         private float _currentHitDistance;
         private float _accumulatedDelta;
+        private XRVisualizer _globalVisualizer;
 
         /// <summary>
         /// The GameObject this is currently hovering over.
@@ -158,11 +159,32 @@ namespace Fjord.XRInteraction.XRInteractors
         {
             get { return _events; }
         }
-
+        
+        protected override void Start()
+        {
+            foreach (XRInputName inputName in _forwardButtonEvents.GetFlags())
+            {
+                ParentUserController.GetInput(inputName).ButtonDown += OnButtonDown;
+                ParentUserController.GetInput(inputName).ButtonHold += OnButtonHold;
+                ParentUserController.GetInput(inputName).ButtonUp += OnButtonUp;
+                ButtonDatums.Add((int)inputName, new XRButtonDatum(ParentUserController, this, inputName));
+            }
+            _globalVisualizer = GetComponent<XRVisualizer>();
+            base.Start();
+        }
+        
         protected void Reset()
         {
             _forwardButtonEvents = 0 << -1;
             _interactionLayerMask = LayerMask.GetMask("Default");
+        }
+
+        private void OnEnable()
+        {
+            if (null != _globalVisualizer)
+            {
+                _globalVisualizer.Show();
+            }
         }
 
         protected virtual void OnDisable()
@@ -184,20 +206,14 @@ namespace Fjord.XRInteraction.XRInteractors
                     OnButtonUp(datum.Value.InputName);
                 }
             }
-        }
-
-        protected override void Start()
-        {
-            foreach (XRInputName inputName in _forwardButtonEvents.GetFlags())
+            
+            if (null != _globalVisualizer)
             {
-                ParentUserController.GetInput(inputName).ButtonDown += OnButtonDown;
-                ParentUserController.GetInput(inputName).ButtonHold += OnButtonHold;
-                ParentUserController.GetInput(inputName).ButtonUp += OnButtonUp;
-                ButtonDatums.Add((int)inputName, new XRButtonDatum(ParentUserController, this, inputName));
+                _globalVisualizer.Hide();
             }
-
-            base.Start();
         }
+
+
 
         /// <summary>
         /// Called from XRController in order to control exectuion order of raycasting and button events.
@@ -207,7 +223,7 @@ namespace Fjord.XRInteraction.XRInteractors
             Collider hitCollider = Raycast();
             ProcessEnterStayExit(hitCollider);
         }
-
+        
         /// <summary>
         /// Is this Interactor currently pressed on any GameObjects?
         /// </summary>
@@ -266,6 +282,7 @@ namespace Fjord.XRInteraction.XRInteractors
                 {
                     SendExitEvents(CurrentCollider);
                     _events.Exit.Invoke(this);
+                    if (VisualizerCondtional()) _globalVisualizer.Exit(this);
                 }
 
                 CurrentCollider = hitCollider;
@@ -274,12 +291,14 @@ namespace Fjord.XRInteraction.XRInteractors
                 {
                     SendEnterEvents(CurrentCollider);
                     _events.Enter.Invoke(this);
+                    if (VisualizerCondtional()) _globalVisualizer.Enter(this);
                 }
             }
             else if (null != CurrentCollider)
             {
                 SendStayEvents(CurrentCollider);
                 _events.Stay.Invoke(this);
+                if (VisualizerCondtional()) _globalVisualizer.Stay(this);
             }
         }
 
@@ -301,6 +320,7 @@ namespace Fjord.XRInteraction.XRInteractors
             }
 
             _events.ButtonDown.Invoke(datum);
+            if (VisualizerCondtional()) _globalVisualizer.ButtonDown(datum);
         }
 
         private void OnButtonHold(XRInputName inputName)
@@ -313,6 +333,7 @@ namespace Fjord.XRInteraction.XRInteractors
             }
 
             _events.ButtonHold.Invoke(datum);
+            if (VisualizerCondtional()) _globalVisualizer.ButtonHold(datum);
         }
 
         private void OnButtonUp(XRInputName inputName)
@@ -338,6 +359,7 @@ namespace Fjord.XRInteraction.XRInteractors
                 }
 
                 _events.ButtonUp.Invoke(datum);
+                if (VisualizerCondtional()) _globalVisualizer.ButtonUp(datum);
             }
         }
 
@@ -509,6 +531,11 @@ namespace Fjord.XRInteraction.XRInteractors
                 }
             }
             return false;
+        }
+
+        private bool VisualizerCondtional()
+        {
+            return enabled && gameObject.activeSelf && _globalVisualizer != null;
         }
     }
 }

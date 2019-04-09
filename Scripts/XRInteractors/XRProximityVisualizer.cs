@@ -13,7 +13,7 @@ namespace Fjord.XRInteraction.XRInteractors
     /// Visualizes a XRLaserInteractor.
     /// </summary>
     [RequireComponent(typeof(XRProximityInteractor))]
-    public class XRProximityVisualizer : MonoBehaviour
+    public class XRProximityVisualizer : XRVisualizer
     {
         [Header("Visualize the Hit Ray of this button event.")]
         [SerializeField]
@@ -52,27 +52,14 @@ namespace Fjord.XRInteraction.XRInteractors
                 _hitTargetScale,
                 _hitTargetScale,
                 _hitTargetScale);
-            
-            _proximityInteractor = GetComponent<XRProximityInteractor>();
-            _proximityInteractor.Events.Enter.AddListener(Enter);
-            _proximityInteractor.Events.Stay.AddListener(Stay);
-            _proximityInteractor.Events.Exit.AddListener(Exit);
-            _proximityInteractor.Events.ButtonDown.AddListener(ButtonDown);
-            _proximityInteractor.Events.ButtonHold.AddListener(ButtonHold);
-            _proximityInteractor.Events.ButtonUp.AddListener(ButtonUp);
-
-            if (null == _proximityInteractor)
-            {
-                Debug.LogWarning("No LaserInteractor specified on " + name);
-            }
         }
 
-        private void Enter(XRPhysicsInteractor interactor)
+        public override void Enter(XRPhysicsInteractor interactor)
         {
             _hitTargetInstance.gameObject.SetActive(true);
         }
 
-        private void Stay(XRPhysicsInteractor interactor)
+        public override void Stay(XRPhysicsInteractor interactor)
         {
             if (_hoverState != HoverState.Press)
             {
@@ -80,8 +67,8 @@ namespace Fjord.XRInteraction.XRInteractors
                 _hitTargetInstance.transform.up = interactor.CurrentHitRay.direction;
             }
         }
-        
-        private void Exit(XRPhysicsInteractor interactor)
+
+        public override void Exit(XRPhysicsInteractor interactor)
         {
             if (_hoverState != HoverState.Press)
             {
@@ -89,7 +76,7 @@ namespace Fjord.XRInteraction.XRInteractors
             }
         }
 
-        private void ButtonDown(XRButtonDatum datum)
+        public override void ButtonDown(XRButtonDatum datum)
         {
             if (datum.InputName == _visualizeButtonPressHitRay && datum.PressCollider != null)
             {
@@ -101,8 +88,8 @@ namespace Fjord.XRInteraction.XRInteractors
                     _hitTargetScale * 1.5f);
             }
         }
-        
-        private void ButtonHold(XRButtonDatum datum)
+
+        public override void ButtonHold(XRButtonDatum datum)
         {
             if (datum.InputName == _visualizeButtonPressHitRay && _hoverState == HoverState.Press)
             {
@@ -110,8 +97,8 @@ namespace Fjord.XRInteraction.XRInteractors
                 _hitTargetInstance.transform.up = datum.RayHitChildedToPressGameObject.direction;
             }
         }
-        
-        private void ButtonUp(XRButtonDatum datum)
+
+        public override void ButtonUp(XRButtonDatum datum)
         {
             if (datum.InputName == _visualizeButtonPressHitRay && _hoverState == HoverState.Press)
             {

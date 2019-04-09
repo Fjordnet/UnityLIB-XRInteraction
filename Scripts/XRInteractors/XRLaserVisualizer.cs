@@ -14,7 +14,7 @@ namespace Fjord.XRInteraction.XRInteractors
     /// </summary>
     [RequireComponent(typeof(LineRenderer))]
     [RequireComponent(typeof(XRLaserVisualizer))]
-    public class XRLaserVisualizer : MonoBehaviour
+    public class XRLaserVisualizer : XRVisualizer
     {
         [Header("Visualize the Hit Ray of this button event.")]
         [SerializeField]
@@ -50,7 +50,6 @@ namespace Fjord.XRInteraction.XRInteractors
         private const int BezierSegmentCount = 32;
         private LineRenderer _lineRenderer;
         private HoverState _hoverState;
-        private XRLaserInteractor _laserInteractor;
         private GameObject _hitTargetInstance;
         private Material _hitTargetMaterial;
 
@@ -60,117 +59,99 @@ namespace Fjord.XRInteraction.XRInteractors
             _hitTargetMaterial = _hitTargetInstance.GetComponent<MeshRenderer>().material;
 
             _lineRenderer = GetComponent<LineRenderer>();
-            _laserInteractor = GetComponent<XRLaserInteractor>();
-
-            if (null == _laserInteractor)
-            {
-                Debug.LogWarning("No LaserInteractor specified on " + name);
-            }
-
+            
             _hoverState = HoverState.Empty;
             _lineRenderer.startColor = _emptyStartColor;
             _lineRenderer.endColor = _emptyEndColor;
             _hitTargetMaterial.color = _emptyEndColor;
+            _hitTargetInstance.transform.localScale = new Vector3(
+                _hitTargetScale,
+                _hitTargetScale,
+                _hitTargetScale);
         }
 
-        private void LateUpdate()
+        public override void Enter(XRPhysicsInteractor interactor)
         {
-            //TODO change to use event callbacks
-
-            if (!_laserInteractor.enabled || !_laserInteractor.gameObject.activeSelf)
+            if (interactor.CanInteractWithCurrentGameObject() && _hoverState != HoverState.Press)
             {
-                _lineRenderer.enabled = false;
-                _hitTargetInstance.gameObject.SetActive(false);
-                return;
+                _hoverState = HoverState.Hover;
+                _lineRenderer.startColor = _hoverStartColor;
+                _lineRenderer.endColor = _hoverEndColor;
+                _hitTargetMaterial.color = _hoverEndColor;
             }
-            else
-            {
-                _lineRenderer.enabled = true;
-                _hitTargetInstance.gameObject.SetActive(true);
-            }
+        }
 
-            XRButtonDatum buttonDatum = _laserInteractor.GetButtonDatum(_visualizeButtonPressHitRay);
-
-            if (null == buttonDatum)
+         public override void Stay(XRPhysicsInteractor interactor)
+        {
+            if (_hoverState != HoverState.Press)
             {
-                Debug.LogWarning("Button specified on " + name + " not found in it's specified LaserInteractor.");
-                return;
-            }
-
-            if (null == buttonDatum.PressCollider)
-            {
+                _hitTargetInstance.transform.position = interactor.CurrentHitRay.origin;
+                _hitTargetInstance.transform.up = interactor.CurrentHitRay.direction;
                 if (_lineRenderer.positionCount != 2)
                 {
                     _lineRenderer.positionCount = 2;
                 }
-                _lineRenderer.SetPosition(0, _laserInteractor.CurrentSourceRay.origin);
-                _lineRenderer.SetPosition(1, _laserInteractor.CurrentHitRay.origin);
+                _lineRenderer.SetPosition(0, interactor.CurrentSourceRay.origin);
+                _lineRenderer.SetPosition(1, interactor.CurrentHitRay.origin);
 
-                if (!_laserInteractor.CanInteractWithCurrentGameObject() && _hoverState != HoverState.Empty)
-                {
-                    _hoverState = HoverState.Empty;
-                    _lineRenderer.startColor = _emptyStartColor;
-                    _lineRenderer.endColor = _emptyEndColor;
-                    _hitTargetMaterial.color = _emptyEndColor;
-                }
-                else if (_laserInteractor.CanInteractWithCurrentGameObject() && _hoverState != HoverState.Hover)
-                {
-                    _hoverState = HoverState.Hover;
-                    _lineRenderer.startColor = _hoverStartColor;
-                    _lineRenderer.endColor = _hoverEndColor;
-                    _hitTargetMaterial.color = _hoverEndColor;
-                }
-                
-                _hitTargetInstance.transform.localScale = new Vector3(
-                    _hitTargetScale,
-                    _hitTargetScale,
-                    _hitTargetScale);
-                _hitTargetInstance.transform.position =  _laserInteractor.CurrentHitRay.origin;
-                _hitTargetInstance.transform.up =  _laserInteractor.CurrentHitRay.direction;
+                _hitTargetInstance.transform.position =  interactor.CurrentHitRay.origin;
+                _hitTargetInstance.transform.up =  interactor.CurrentHitRay.direction;
             }
-            else
+        }
+
+         public override void Exit(XRPhysicsInteractor interactor)
+        {
+            if (interactor.CanInteractWithCurrentGameObject() && _hoverState != HoverState.Press)
+            {
+                _hoverState = HoverState.Empty;
+                _lineRenderer.startColor = _emptyStartColor;
+                _lineRenderer.endColor = _emptyEndColor;
+                _hitTargetMaterial.color = _emptyEndColor;
+            }
+        }
+
+         public override void ButtonDown(XRButtonDatum datum)
+        {
+            if (datum.InputName == _visualizeButtonPressHitRay && datum.PressCollider != null)
+            {
+                _hoverState = HoverState.Press;
+                _lineRenderer.startColor = _pressStartColor;
+                _lineRenderer.endColor = _pressEndColor;
+                _hitTargetMaterial.color = _pressEndColor;
+                _hitTargetInstance.transform.localScale = new Vector3(
+                    _hitTargetScale * 1.5f,
+                    _hitTargetScale * 1.5f,
+                    _hitTargetScale * 1.5f);
+                
+                Ray hitRay = HitRay(datum.ParentInteractor);
+                
+                _hitTargetInstance.transform.position = hitRay.origin;
+                _hitTargetInstance.transform.up = datum.RayHitChildedToPressGameObject.direction;
+            }
+        }
+
+         public override void ButtonHold(XRButtonDatum datum)
+        {
+            if (datum.InputName == _visualizeButtonPressHitRay && _hoverState == HoverState.Press)
             {
                 if (_lineRenderer.positionCount != BezierSegmentCount)
                 {
                     _lineRenderer.positionCount = BezierSegmentCount;
                 }
-
-                if (_hoverState != HoverState.Press)
-                {
-                    _hoverState = HoverState.Press;
-                    _lineRenderer.startColor = _pressStartColor;
-                    _lineRenderer.endColor = _pressEndColor;
-                    _hitTargetMaterial.color = _pressEndColor;
-                }
-
+                
+                Ray hitRay = HitRay(datum.ParentInteractor);
+                
                 float startEndDistance = Vector3.Distance(
-                    _laserInteractor.CurrentSourceRay.origin,
-                    buttonDatum.RayHitChildedToPressGameObject.origin);
+                    datum.ParentInteractor.CurrentSourceRay.origin,
+                    datum.RayHitChildedToPressGameObject.origin);
                 float handleDistance = startEndDistance / 4f;
-
-                Ray hitRay = new Ray();
-
-                if (_aimHitRayAtInteractor)
-                {
-                    hitRay.origin = buttonDatum.RayHitChildedToPressGameObject.origin;
-                    hitRay.direction = buttonDatum.RayHitChildedToPressGameObject.origin - _laserInteractor.transform.position;
-                }
-                else
-                {
-                    hitRay.origin = buttonDatum.RayHitChildedToPressGameObject.origin;
-                    hitRay.direction = buttonDatum.RayHitChildedToPressGameObject.direction;
-                }
-
-                _hitTargetInstance.transform.localScale = new Vector3(
-                    _hitTargetScale * 1.5f,
-                    _hitTargetScale * 1.5f,
-                    _hitTargetScale * 1.5f);
-                _hitTargetInstance.transform.position = hitRay.origin;
-                _hitTargetInstance.transform.up = buttonDatum.RayHitChildedToPressGameObject.direction;
-
+                
+                _hitTargetInstance.transform.position = datum.RayHitChildedToPressGameObject.origin;
+                _hitTargetInstance.transform.up = datum.RayHitChildedToPressGameObject.direction;
+                
                 CubicBezierSegment bezierSegment = new CubicBezierSegment(
-                    _laserInteractor.CurrentSourceRay.origin,
-                    _laserInteractor.CurrentSourceRay.GetPoint(handleDistance),
+                    datum.ParentInteractor.CurrentSourceRay.origin,
+                    datum.ParentInteractor.CurrentSourceRay.GetPoint(handleDistance),
                     hitRay.GetPoint(handleDistance),
                     hitRay.origin);
 
@@ -182,6 +163,53 @@ namespace Fjord.XRInteraction.XRInteractors
                     t += step;
                 }
             }
+        }
+
+         public override void ButtonUp(XRButtonDatum datum)
+        {
+            if (datum.InputName == _visualizeButtonPressHitRay && _hoverState == HoverState.Press)
+            {
+                _hoverState = HoverState.Hover;
+                _lineRenderer.startColor = _hoverStartColor;
+                _lineRenderer.endColor = _hoverEndColor;
+                _hitTargetMaterial.color = _hoverEndColor;
+                _hitTargetInstance.transform.localScale = new Vector3(
+                    _hitTargetScale,
+                    _hitTargetScale,
+                    _hitTargetScale);
+            }
+        }
+
+         public override void Show()
+         {
+             _lineRenderer.enabled = true;
+             _hitTargetInstance.gameObject.SetActive(true);
+         }
+
+         public override void Hide()
+         {
+             _lineRenderer.enabled = false;
+             _hitTargetInstance.gameObject.SetActive(false);
+         }
+
+         private Ray HitRay(XRPhysicsInteractor interactor)
+        {
+            XRButtonDatum buttonDatum = interactor.GetButtonDatum(_visualizeButtonPressHitRay);
+            
+            Ray hitRay = new Ray();
+
+            if (_aimHitRayAtInteractor)
+            {
+                hitRay.origin = buttonDatum.RayHitChildedToPressGameObject.origin;
+                hitRay.direction = buttonDatum.RayHitChildedToPressGameObject.origin - interactor.transform.position;
+            }
+            else
+            {
+                hitRay.origin = buttonDatum.RayHitChildedToPressGameObject.origin;
+                hitRay.direction = buttonDatum.RayHitChildedToPressGameObject.direction;
+            }
+
+            return hitRay;
         }
     }
 }
