@@ -49,18 +49,12 @@ namespace Fjord.XRInteraction.XRInteractors
         [SerializeField]
         private float _dragTickSteps = .8f;    //TODO this probably shouldn't be here
 
-        [Header("Can the global visualizer be overriden?")]
-        [SerializeField]
-        private bool _globalVisualizerOverridable;
-
         protected const int SearchCacheSize = 8;
         protected readonly Dictionary<int, XRButtonDatum> ButtonDatums = new Dictionary<int, XRButtonDatum>();
         private readonly List<XRButtonDatum> _heldButtons = new List<XRButtonDatum>();
 
         private readonly List<XRInteractionEventReceiver> _recyclableInteractions =
             new List<XRInteractionEventReceiver>();
-        
-        private List<XRVisualizer> _recyclableLocalVisualizers = new List<XRVisualizer>();
 
         private float _currentColliderDistance;
         private Collider _currentCollider;
@@ -69,7 +63,6 @@ namespace Fjord.XRInteraction.XRInteractors
         private float _currentHitDistance;
         private float _accumulatedDelta;
         private XRVisualizer _globalVisualizer;
-        private XRVisualizer _localVisualizer;
 
         /// <summary>
         /// The GameObject this is currently hovering over.
@@ -218,11 +211,6 @@ namespace Fjord.XRInteraction.XRInteractors
             {
                 _globalVisualizer.Hide();
             }
-            if (null != _localVisualizer)
-            {
-                _localVisualizer.Hide();
-                _localVisualizer = null;
-            }
         }
 
         /// <summary>
@@ -270,7 +258,7 @@ namespace Fjord.XRInteraction.XRInteractors
 
         public bool ContainsNecessaryTags(Collider targetCollider)
         {
-            GetInteractions(targetCollider, _recyclableInteractions, _recyclableLocalVisualizers);
+            GetInteractions(targetCollider, _recyclableInteractions);
             for (int i = 0; i < _recyclableInteractions.Count; ++i)
             {
                 if (_tagMask.CompareTags(_recyclableInteractions[i].gameObject))
@@ -292,8 +280,7 @@ namespace Fjord.XRInteraction.XRInteractors
                 {
                     SendExitEvents(CurrentCollider);
                     _events.Exit.Invoke(this);
-                    if (null != _localVisualizer ) _localVisualizer.Exit(this);
-                    else if (VisualizerCondtional()) _globalVisualizer.Exit(this);
+                    if (VisualizerCondtional()) _globalVisualizer.Exit(this);
                 }
 
                 CurrentCollider = hitCollider;
@@ -302,24 +289,20 @@ namespace Fjord.XRInteraction.XRInteractors
                 {
                     SendEnterEvents(CurrentCollider);
                     _events.Enter.Invoke(this);
-                    if (null != _localVisualizer )  _localVisualizer.Enter(this);
-                    else if (VisualizerCondtional()) _globalVisualizer.Enter(this);
+                    if (VisualizerCondtional()) _globalVisualizer.Enter(this);
                 }
             }
             else if (null != CurrentCollider)
             {
                 SendStayEvents(CurrentCollider);
                 _events.Stay.Invoke(this);
-                Debug.Log($"{gameObject} {_localVisualizer}");
-                if (null != _localVisualizer ) _localVisualizer.Stay(this);
-                else if (VisualizerCondtional()) _globalVisualizer.Stay(this);
+                if (VisualizerCondtional()) _globalVisualizer.Stay(this);
             }
             else
             {
                 if (null == CurrentCollider)
                 {
-                    if (null != _localVisualizer) _localVisualizer.Empty(this);
-                    else if (VisualizerCondtional()) _globalVisualizer.Empty(this);
+                    if (VisualizerCondtional()) _globalVisualizer.Empty(this);
                 }
             }
         }
@@ -342,8 +325,7 @@ namespace Fjord.XRInteraction.XRInteractors
             }
 
             _events.ButtonDown.Invoke(datum);
-            if (null != _localVisualizer ) _localVisualizer.ButtonDown(datum);
-            else if (VisualizerCondtional()) _globalVisualizer.ButtonDown(datum);
+            if (VisualizerCondtional()) _globalVisualizer.ButtonDown(datum);
         }
 
         private void OnButtonHold(XRInputName inputName)
@@ -356,8 +338,7 @@ namespace Fjord.XRInteraction.XRInteractors
             }
 
             _events.ButtonHold.Invoke(datum);
-            if (null != _localVisualizer ) _localVisualizer.ButtonHold(datum);
-            else if (VisualizerCondtional()) _globalVisualizer.ButtonHold(datum);
+            if (VisualizerCondtional()) _globalVisualizer.ButtonHold(datum);
         }
 
         private void OnButtonUp(XRInputName inputName)
@@ -383,14 +364,13 @@ namespace Fjord.XRInteraction.XRInteractors
                 }
 
                 _events.ButtonUp.Invoke(datum);
-                if (null != _localVisualizer ) _localVisualizer.ButtonUp(datum);
-                else if (VisualizerCondtional()) _globalVisualizer.ButtonUp(datum);
+                if (VisualizerCondtional()) _globalVisualizer.ButtonUp(datum);
             }
         }
 
         private void SendExitEvents(Collider targetCollider)
         {
-            GetInteractions(targetCollider, _recyclableInteractions, _recyclableLocalVisualizers);
+            GetInteractions(targetCollider, _recyclableInteractions);
             bool eventsSent = false;
             for (int i = 0; i < _recyclableInteractions.Count; ++i)
             {
@@ -418,7 +398,7 @@ namespace Fjord.XRInteraction.XRInteractors
 
         private void SendEnterEvents(Collider targetCollider)
         {
-            GetInteractions(targetCollider, _recyclableInteractions, _recyclableLocalVisualizers);
+            GetInteractions(targetCollider, _recyclableInteractions);
             bool eventsSent = false;
             for (int i = 0; i < _recyclableInteractions.Count; ++i)
             {
@@ -446,7 +426,7 @@ namespace Fjord.XRInteraction.XRInteractors
 
         private void SendStayEvents(Collider targetCollider)
         {
-            GetInteractions(targetCollider, _recyclableInteractions, _recyclableLocalVisualizers);
+            GetInteractions(targetCollider, _recyclableInteractions);
             for (int i = 0; i < _recyclableInteractions.Count; ++i)
             {
                 if (_recyclableInteractions[i].enabled &&
@@ -459,7 +439,7 @@ namespace Fjord.XRInteraction.XRInteractors
 
         private void SendButtonDownEvents(Collider targetCollider, XRButtonDatum datum)
         {
-            GetInteractions(targetCollider, _recyclableInteractions, _recyclableLocalVisualizers);
+            GetInteractions(targetCollider, _recyclableInteractions);
             bool pressOccured = false;
             for (int i = 0; i < _recyclableInteractions.Count; ++i)
             {
@@ -486,7 +466,7 @@ namespace Fjord.XRInteraction.XRInteractors
 
         private void SendButtonHoldEvents(Collider targetCollider, XRButtonDatum datum)
         {
-            GetInteractions(targetCollider, _recyclableInteractions, _recyclableLocalVisualizers);
+            GetInteractions(targetCollider, _recyclableInteractions);
             bool holdOccured = false;
             for (int i = 0; i < _recyclableInteractions.Count; ++i)
             {
@@ -512,7 +492,7 @@ namespace Fjord.XRInteraction.XRInteractors
 
         private void SendButtonUpEvents(Collider targetCollider, XRButtonDatum datum)
         {
-            GetInteractions(targetCollider, _recyclableInteractions, _recyclableLocalVisualizers);
+            GetInteractions(targetCollider, _recyclableInteractions);
             bool releaseOccured = false;
             for (int i = 0; i < _recyclableInteractions.Count; ++i)
             {
@@ -537,42 +517,18 @@ namespace Fjord.XRInteraction.XRInteractors
         }
 
         private void GetInteractions(Collider targetCollider, 
-            List<XRInteractionEventReceiver> recyclableInteractions, 
-            List<XRVisualizer> recyclableLocalVisualizer)
+            List<XRInteractionEventReceiver> recyclableInteractions)
         {
             targetCollider.GetComponents(recyclableInteractions);
             if (recyclableInteractions.Count == 0 && null != targetCollider.attachedRigidbody)
             {
                 targetCollider.attachedRigidbody.GetComponents(recyclableInteractions);
-                if (_globalVisualizerOverridable) targetCollider.attachedRigidbody.GetComponents(recyclableLocalVisualizer);
-            }
-            else if (_globalVisualizerOverridable)
-            {
-                targetCollider.GetComponents(recyclableLocalVisualizer);
-            }
-
-            if (_recyclableLocalVisualizers.Count > 0 && _recyclableLocalVisualizers[0] != _localVisualizer)
-            {
-                if (_localVisualizer != null) _localVisualizer.Hide();
-                _localVisualizer = _recyclableLocalVisualizers[0];
-                _localVisualizer.Show(this);
-                if (_globalVisualizer != null) _globalVisualizer.Hide();
-            }
-            else if (_recyclableLocalVisualizers.Count == 0 && null != _localVisualizer)
-            {
-                _localVisualizer.Hide();
-                _localVisualizer = null;
-                if (_globalVisualizer != null) _globalVisualizer.Show(this);
-            }
-            if (_recyclableLocalVisualizers.Count > 1)
-            {
-                Debug.LogWarning($"More than one local visualizer on {_recyclableLocalVisualizers[0].gameObject}.");
             }
         }
 
         private bool HasInteractionReciever(Collider targetCollider)
         {
-            GetInteractions(targetCollider, _recyclableInteractions, _recyclableLocalVisualizers);
+            GetInteractions(targetCollider, _recyclableInteractions);
             for (int i = 0; i < _recyclableInteractions.Count; ++i)
             {
                 if (_recyclableInteractions[i].enabled)

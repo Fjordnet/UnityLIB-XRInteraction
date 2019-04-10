@@ -75,7 +75,7 @@ namespace Fjord.XRInteraction.XRInteractors
                     _hitTargetScale);
             }
         }
-        
+
         public override void Empty(XRPhysicsInteractor interactor)
         {
             SetStraightLaser(interactor.CurrentSourceRay, interactor.CurrentHitRay);
@@ -97,7 +97,6 @@ namespace Fjord.XRInteraction.XRInteractors
 
         public override void Stay(XRPhysicsInteractor interactor)
         {
-            Debug.Log($"STAY {gameObject}");
             if (_hoverState != HoverState.Press)
             {
                 SetStraightLaser(interactor.CurrentSourceRay, interactor.CurrentHitRay);
@@ -133,7 +132,7 @@ namespace Fjord.XRInteraction.XRInteractors
                         _hitTargetScale * 1.5f,
                         _hitTargetScale * 1.5f,
                         _hitTargetScale * 1.5f);
-                    
+
                     Ray hitRay = HitRay(datum.ParentInteractor);
                     _hitTargetInstance.transform.position = hitRay.origin;
                     _hitTargetInstance.transform.up = datum.RayHitChildedToPressGameObject.direction;
@@ -159,8 +158,16 @@ namespace Fjord.XRInteraction.XRInteractors
 
                 if (null != _hitTargetInstance)
                 {
-                    _hitTargetInstance.transform.position = datum.RayHitChildedToPressGameObject.origin;
-                    _hitTargetInstance.transform.up = datum.RayHitChildedToPressGameObject.direction;
+                    if (datum.RayHitOverride == null)
+                    {
+                        _hitTargetInstance.transform.position = datum.RayHitChildedToPressGameObject.origin;
+                        _hitTargetInstance.transform.up = datum.RayHitChildedToPressGameObject.direction;
+                    }
+                    else
+                    {
+                        _hitTargetInstance.transform.position = datum.RayHitOverride.Value.origin;
+                        _hitTargetInstance.transform.up = datum.RayHitOverride.Value.direction;
+                    }
                 }
 
                 CubicBezierSegment bezierSegment = new CubicBezierSegment(
@@ -242,15 +249,32 @@ namespace Fjord.XRInteraction.XRInteractors
 
             Ray hitRay = new Ray();
 
-            if (_aimHitRayAtInteractor)
+            if (buttonDatum.RayHitOverride == null)
             {
-                hitRay.origin = buttonDatum.RayHitChildedToPressGameObject.origin;
-                hitRay.direction = buttonDatum.RayHitChildedToPressGameObject.origin - interactor.transform.position;
+                if (_aimHitRayAtInteractor)
+                {
+                    hitRay.origin = buttonDatum.RayHitChildedToPressGameObject.origin;
+                    hitRay.direction = buttonDatum.RayHitChildedToPressGameObject.origin -
+                                       interactor.transform.position;
+                }
+                else
+                {
+                    hitRay.origin = buttonDatum.RayHitChildedToPressGameObject.origin;
+                    hitRay.direction = buttonDatum.RayHitChildedToPressGameObject.direction;
+                }
             }
             else
             {
-                hitRay.origin = buttonDatum.RayHitChildedToPressGameObject.origin;
-                hitRay.direction = buttonDatum.RayHitChildedToPressGameObject.direction;
+                if (_aimHitRayAtInteractor)
+                {
+                    hitRay.origin = buttonDatum.RayHitOverride.Value.origin;
+                    hitRay.direction = buttonDatum.RayHitOverride.Value.origin - interactor.transform.position;
+                }
+                else
+                {
+                    hitRay.origin = buttonDatum.RayHitOverride.Value.origin;
+                    hitRay.direction = buttonDatum.RayHitOverride.Value.direction;
+                }
             }
 
             return hitRay;

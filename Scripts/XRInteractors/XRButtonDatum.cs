@@ -22,6 +22,13 @@ namespace Fjord.XRInteraction.XRUser
 		private Transform _pressLocalTransform;
 		
 		/// <summary>
+		/// Visualizers by default will defer to RayHitChildedToPressGameObject in order to determine
+		/// where to draw the visualizer attaching to the interacted with object. If this value is set
+		/// to non-null the visualizer should defer to using this rather than RayHitChildedToPressGameObject.
+		/// </summary>
+		public Ray? RayHitOverride { get; set; }
+		
+		/// <summary>
 		/// Collider which button was pressed on.
 		/// </summary>
 		public Collider PressCollider { get; private set; }
@@ -129,6 +136,7 @@ namespace Fjord.XRInteraction.XRUser
 			_pressHitRay = new Ray(ParentInteractor.transform.position, Vector3.zero);
 			_pressLocalHitTransform.position = ParentInteractor.transform.position;
 			_pressLocalHitTransform.rotation = ParentInteractor.transform.rotation;
+			RayHitOverride = null;
 		}
 	}
 }
