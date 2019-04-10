@@ -16,6 +16,9 @@ namespace Fjord.XRInteraction.XRInteractors
     /// </summary>
     public abstract class XRVisualizer : MonoBehaviour
     {
+        public virtual void Empty(XRPhysicsInteractor interactor)
+        {}
+        
         public virtual void Enter(XRPhysicsInteractor interactor)
         {}
 
@@ -34,7 +37,7 @@ namespace Fjord.XRInteraction.XRInteractors
         public virtual void ButtonUp(XRButtonDatum datum)
         {}
 
-        public virtual void Show()
+        public virtual void Show(XRPhysicsInteractor interactor)
         {}
         
         public virtual void Hide()
