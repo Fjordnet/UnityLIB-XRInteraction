@@ -206,7 +206,6 @@ namespace Fjord.XRInteraction.XRInteractors
 
         public override void Show(XRPhysicsInteractor interactor)
         {
-            Debug.Log($"SHOW {gameObject}");
             _lineRenderer.enabled = true;
             if (null != _hitTargetInstance)
             {
@@ -217,7 +216,6 @@ namespace Fjord.XRInteraction.XRInteractors
 
         public override void Hide()
         {
-            Debug.Log($"HIDE {gameObject}");
             _lineRenderer.enabled = false;
             if (null != _hitTargetInstance)
             {
