@@ -76,7 +76,7 @@ namespace Fjord.XRInteraction.XRInteractions
                 Matrix4x4 matrix4X4 = new Matrix4x4();
                 for (int i = 0; i < _meshFilters.Length; ++i)
                 {
-                    if (_meshFilters[i].gameObject.activeSelf)
+                    if (_meshFilters[i].gameObject.activeSelf && _meshFilters[i].GetComponent<MeshRenderer>().enabled)
                     {
                         matrix4X4.SetTRS(
                             _meshFilters[i].transform.position,
