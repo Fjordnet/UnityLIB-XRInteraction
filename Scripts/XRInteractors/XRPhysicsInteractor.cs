@@ -7,6 +7,7 @@ using Fjord.XRInteraction.XRInput;
 using Fjord.XRInteraction.XRInteractions;
 using Fjord.XRInteraction.XRUnityEvents;
 using Fjord.XRInteraction.XRUser;
+using Fjord.Common.Extensions;
 using UnityEngine;
 
 namespace Fjord.XRInteraction.XRInteractors

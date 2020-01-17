@@ -1,6 +1,7 @@
 ﻿using System;
 using Fjord.Common.Data;
 using Fjord.Common.Types;
+using Fjord.Common.UnityEditor.PropertyDrawers;
 using Fjord.XRInteraction.Attachables;
 using UnityEditor;
 using UnityEditorInternal;

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Fjord.Common.Data;
 using Fjord.Common.Types;
+using Fjord.Common.UnityEditor;
 using Fjord.XRInteraction.XRInput;
 using Fjord.XRInteraction.XRUser;
 using UnityEditor;
